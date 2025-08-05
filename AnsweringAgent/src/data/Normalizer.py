@@ -555,7 +555,7 @@ class AnsweringAgentNormalizer:
         # Generate MPNet embeddings for knowledge distillation if requested
         if self.generate_mpnet_embeddings:
             # Generate embedding for the unified dialog context
-            mpnet_embedding = self.generate_mpnet_embedding(dialog_context)
+            mpnet_embedding = self.generate_mpnet_embedding(answer) # TODO: changed to answer
             result['teacher_embed'] = torch.tensor(mpnet_embedding, dtype=torch.float32)
         else:
             # Create zero embedding if MPNet not enabled

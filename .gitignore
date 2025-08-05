@@ -11,4 +11,5 @@ documents/
 /thesis_materials/
 *.log
 training.log
-/generated_avdn_dataset
+AnsweringAgent/src/data/generated_avdn_dataset
+.DS_Store
