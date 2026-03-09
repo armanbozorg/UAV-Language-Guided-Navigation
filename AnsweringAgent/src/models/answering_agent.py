@@ -257,10 +257,7 @@ class SeparateEncodingTextProcessor(nn.Module):
         )
         unified_features = self.unified_proj(unified_output.last_hidden_state.mean(dim=1))
         
-        # TODO: REMOVE - Multi-level encoding architecture removed for simplicity
-        # The 3-way encoding (goal/context/unified) was over-engineered for this problem.
-        # T5 already handles complex sequences well, and separate encoding adds computational
-        # overhead without clear benefit. Unified context preserves natural conversation flow.
+        # Fuse all components
         fused_features = self._fuse_components(goal_features, context_features, unified_features)
         
         return fused_features, unified_output.last_hidden_state
@@ -513,8 +510,7 @@ class AnsweringAgent(nn.Module):
         # This unified approach preserves natural conversation flow and inter-relationships
         # between goal, history, and current context - optimal for T5's sequence understanding
         
-        # Simplified unified context processing - single T5 encoder pass
-        # TODO: REMOVE - SeparateEncodingTextProcessor entirely and replace with direct T5 encoding
+        # Separate encoding processing with pre-tokenized components
         text_fused_features, text_features_seq = self.separate_encoding_processor(
             unified_input=text_input["input_ids"],
             unified_mask=text_input["attention_mask"],
@@ -523,7 +519,6 @@ class AnsweringAgent(nn.Module):
             context_input=text_input["current_question_input"]["input_ids"],
             context_mask=text_input["current_question_input"]["attention_mask"]
         )
-        # Use the unified sequence directly - preserves natural conversation flow
         text_features_expanded = text_features_seq
         
 
