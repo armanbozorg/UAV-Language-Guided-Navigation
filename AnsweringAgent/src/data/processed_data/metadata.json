@@ -1,0 +1,12 @@
+{
+  "dataset_counts": {
+    "train": 3335,
+    "val_seen": 258,
+    "val_unseen": 290
+  },
+  "dialog_turn_counts": {
+    "train": 7165,
+    "val_seen": 506,
+    "val_unseen": 573
+  }
+}
