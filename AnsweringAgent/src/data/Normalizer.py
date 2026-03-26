@@ -49,10 +49,10 @@ class AnsweringAgentNormalizer:
         """Initialize MPNet model and tokenizer for knowledge distillation."""
         try:
             print("Loading MPNet tokenizer for knowledge distillation...")
-            self.mpnet_tokenizer = AutoTokenizer.from_pretrained("mpnet_offline")
+            self.mpnet_tokenizer = AutoTokenizer.from_pretrained(self.config.training.kd_teacher_model_name) 
             
             print("Loading MPNet model for knowledge distillation...")
-            self.mpnet_model = AutoModel.from_pretrained("mpnet_offline")
+            self.mpnet_model = AutoModel.from_pretrained(self.config.training.kd_teacher_model_name)
             self.mpnet_model.eval()
             
             print("✅ MPNet initialized successfully for knowledge distillation")
