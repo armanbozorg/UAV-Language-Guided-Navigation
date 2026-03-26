@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+"""
+Download MPNet model and tokenizer
+
+USAGE:
+    cd AnsweringAgent/src/data
+    python mpnet_downloader.py
+"""
+
+from transformers import AutoTokenizer, AutoModel
+import os
+
+def main():
+    os.makedirs("./mpnet_offline", exist_ok=True)   
+    name = "sentence-transformers/all-mpnet-base-v2"
+    save_dir = "./mpnet_offline"
+    print("downloading mpnet tokenizer to", save_dir)
+    tok = AutoTokenizer.from_pretrained(name)
+    model = AutoModel.from_pretrained(name)
+    print("saving mpnet tokenizer to", save_dir)
+    tok.save_pretrained(save_dir)
+    print("downloading mpnet model to", save_dir)
+    model.save_pretrained(save_dir)
+    print("saved mpnet tokenizer to", save_dir)
+    print("saved mpnet model to", save_dir)
+    print("done")
+
+if __name__ == "__main__":
+    main()
