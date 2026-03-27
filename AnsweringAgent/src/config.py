@@ -101,9 +101,9 @@ class DataConfig:
     
     # Augmented dataset paths with paraphrases (NEW - for contrastive learning)
     use_augmented_data: bool = True  # Toggle to use augmented data with paraphrases
-    train_augmented_json_path: str = str(PROJECT_ROOT / "AnsweringAgent/src/data/augmented_data/train_contrastive.json")
-    val_seen_augmented_json_path: str = str(PROJECT_ROOT / "AnsweringAgent/src/data/augmented_data/val_seen_contrastive.json")
-    val_unseen_augmented_json_path: str = str(PROJECT_ROOT / "AnsweringAgent/src/data/augmented_data/val_unseen_contrastive.json")
+    train_augmented_json_path: str = str(PROJECT_ROOT / "AnsweringAgent/src/data/augmented_data/train_data_with_paraphrases")
+    val_seen_augmented_json_path: str = str(PROJECT_ROOT / "AnsweringAgent/src/data/augmented_data/val_seen_data_with_paraphrases.json")
+    val_unseen_augmented_json_path: str = str(PROJECT_ROOT / "AnsweringAgent/src/data/augmented_data/val_unseen_data_with_paraphrases.json")
     
     # Data preprocessing settings
     use_augmentation: bool = False  # Enable/disable visual augmentation during preprocessing
