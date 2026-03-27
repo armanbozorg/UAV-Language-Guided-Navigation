@@ -941,7 +941,6 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, scheduler
                 
                 # Calculate current weights for this epoch
                 if hasattr(config.training, 'log_loss_weights') and config.training.log_loss_weights:
-                    max_curriculum_epochs = config.training.curriculum_epochs
                     current_ce_weight = ce_weight_fn(epoch)
                     current_contrastive_weight, revival_info = adaptive_contrastive_fn(epoch, recent_contrastive_loss=avg_contrastive_loss)
                     current_dest_weight = destination_weight_fn(epoch)
